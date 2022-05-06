@@ -81,15 +81,16 @@ def train(epochs, batch_size, train_data, dev_data, train_cap, dev_cap, model_pa
     print("time:",time.time()-st)
     print()
 
-    embed.save(model_path_embed+str(e))
-    transformer.save(model_path_transformer+str(e))
+    if e%5==0:
+      embed.save(model_path_embed+str(e))
+      transformer.save(model_path_transformer+str(e))
 
-    file1 = open(result_path + str(e)+ ".txt","w")
-    file1.write("train loss: " + str(epoch_loss/train_cap) + "\n")
-    file1.write("validation loss: " + str(dev_loss/dev_cap) + "\n")
-    file1.write("train accuracy: "+ str(same/(batch_size*train_cap)*100) + "%\n")
-    file1.write("validation accuracy: " + str(same_dev/(batch_size*dev_cap)*100) + "%\n")
-    file1.write("time: " + str(time.time()-st) + "\n")
-    file1.close()
+      file1 = open(result_path + str(e)+ ".txt","w")
+      file1.write("train loss: " + str(epoch_loss/train_cap) + "\n")
+      file1.write("validation loss: " + str(dev_loss/dev_cap) + "\n")
+      file1.write("train accuracy: "+ str(same/(batch_size*train_cap)*100) + "%\n")
+      file1.write("validation accuracy: " + str(same_dev/(batch_size*dev_cap)*100) + "%\n")
+      file1.write("time: " + str(time.time()-st) + "\n")
+      file1.close()
 
   return embed, transformer
