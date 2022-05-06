@@ -1,11 +1,11 @@
 config = {
     "model": {
-        "batch_size": 8,
-        "embed_dim": 256,
-        "ff_dim": 3,
-        "train_cap": 16,
-        "dev_cap": 16,
-        "epochs": 3
+        "batch_size": 32, #batch size of the model
+        "embed_dim": 256, #embed dimension as used in the transformer model
+        "ff_dim": 3, # feed forward dimension as used in the transformer model
+        "train_cap": 600000, #the number of training samples to consider from train.csv
+        "dev_cap": 400000, #the number of training samples to consider from dev.csv
+        "epochs": 50 #number of epochs
     },
 
     "audio_data_path": {
